@@ -1,0 +1,11 @@
+footer {
+    font-size: 1rem; /* Aumentato rispetto a 1rem */
+    font-weight: bold; /* Testo in grassetto */
+    color: #000; /* Cambiato da #333 a nero puro */
+    padding: 15px; /* Un po' più di spazio */
+    text-align: center;
+    position: fixed; /* Fissato in basso */
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8); /* Leggero sfondo bianco trasparente per separarlo dal contenuto */
+}

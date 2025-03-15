@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: #0a1931; /* Blu ancora più profondo per un tocco premium */
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-top: 50px; /* Aumentato lo spazio sopra */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
