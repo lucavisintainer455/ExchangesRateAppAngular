@@ -1,0 +1,10 @@
+.navbar {
+    background-color: inherit;
+    margin-top: 100px;
+  }
+  
+  .navbar .navbar-nav {
+    margin: 0 auto;
+    text-align: center;
+  }
+  

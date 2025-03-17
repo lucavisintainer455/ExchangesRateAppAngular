@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: #0a1931;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  
+    position: absolute; /* Sempre in cima alla pagina */
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+  
+  .navbar {
+    background-color: inherit;
+    margin-top: 100px;
+  }
+  
+  .navbar .navbar-nav {
+    margin: 0 auto;
+    text-align: center;
+  }
+  
