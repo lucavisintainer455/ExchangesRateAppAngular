@@ -1,18 +1,31 @@
-<div class="card flex justify-center">
-    <p-select [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Country" class="w-full md:w-56">
+<div class="currency-selector">
+    <p-dropdown 
+    [options]="currencies" 
+    [(ngModel)]="selectedCurrency"
+    (ngModelChange)="onCurrencyChange($event)"
+    optionLabel="code" 
+    [filter]="true" 
+    filterBy="code" 
+    [showClear]="true" 
+    placeholder="Seleziona valuta" 
+    class="custom-dropdown"
+>
+        
+        <!-- Template per l'elemento selezionato -->
         <ng-template #selectedItem let-selectedOption>
-            <div class="flex items-center gap-2" *ngIf="selectedOption">
-                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + selectedOption.code.toLowerCase()" style="width: 18px" />
-                <div>{{ selectedOption.name }}</div>
+            <div class="dropdown-item" *ngIf="selectedOption">
+                <img class="flag-icon" [src]="'https://wise.com/web-art/assets/flags/' + selectedOption.code.toLowerCase() + '.svg'" />
+                <span>{{ selectedOption.code }}</span>
             </div>
         </ng-template>
-        <ng-template let-item="item">
-            <div class="flex items-center gap-2">
-                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + item.code.toLowerCase()" style="width: 18px" />
-                <div>{{ item.name }}</div>
+
+        <!-- Template per ogni elemento della lista -->
+        <ng-template let-item pTemplate="item">
+            <div class="dropdown-item">
+                <img class="flag-icon" [src]="'https://wise.com/web-art/assets/flags/' + item.code.toLowerCase() + '.svg'" />
+                <span>{{ item.code }}</span>
             </div>
         </ng-template>
-    </p-select>
+
+    </p-dropdown>
 </div>
-
-

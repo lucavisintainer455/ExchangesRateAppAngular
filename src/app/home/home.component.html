@@ -16,4 +16,22 @@
     </div>
   </nav>                  
 
-  <app-menu></app-menu>
+  <app-menu [(selectedCurrency)]="selectedCurrencyFrom" (selectedCurrencyChange)="convertCurrency()"></app-menu>
+  <app-menu [(selectedCurrency)]="selectedCurrencyTo" (selectedCurrencyChange)="convertCurrency()"></app-menu>
+  
+  
+  
+  <app-input-valuta
+      [(value)]="amountFrom" 
+      [currencyCode]="selectedCurrencyFrom"
+      placeholder="Importo da convertire"
+      (ngModelChange)="convertCurrency()">
+  </app-input-valuta>
+  
+  <app-input-valuta
+    [value]="convertedAmount ?? undefined"
+    [currencyCode]="selectedCurrencyTo"
+    placeholder="Importo convertito"
+    disabled>
+  </app-input-valuta>
+
