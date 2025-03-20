@@ -1,13 +1,14 @@
 .currency-input {
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
+    border: none; 
     border-radius: 6px;
     padding: 8px;
     gap: 10px;
     width: 100%;
     max-width: 220px;
 }
+
 
 .currency-code {
     font-weight: bold;

@@ -11,3 +11,5 @@ export const routes: Routes = [
     // Rotta wildcard: qualsiasi URL non valido va alla home
     { path: "**", redirectTo: "home", pathMatch: "full" }
 ];
+
+

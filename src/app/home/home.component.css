@@ -8,21 +8,133 @@ h1 {
     text-align: center;
     letter-spacing: 3px;
     text-transform: uppercase;
-  
-    position: absolute; /* Sempre in cima alla pagina */
+    position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-  }
-  
-  .navbar {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
     background-color: inherit;
     margin-top: 100px;
-  }
-  
-  .navbar .navbar-nav {
+    padding: 0;
+}
+
+.navbar .navbar-nav {
     margin: 0 auto;
     text-align: center;
-  }
-  
+    padding: 0;
+}
+
+.exchange-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 150px;
+    width: 100%;
+    padding: 0;
+}
+
+.amount-input, .converted-amount {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.menu-left, .menu-right {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+app-input-valuta, app-menu {
+    width: 100%;
+    max-width: 200px;
+    margin: 0;
+    padding: 0;
+}
+
+.swap-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.swap-button button {
+    background-color: #0a1931;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.swap-button button:hover {
+    background: #1e3a8a;
+    color: white;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.material-symbols-outlined {
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.amount-input p-inputnumber, 
+.converted-amount p-inputnumber {
+    width: 100%;
+    max-width: 150px;
+    text-align: center;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.amount-input input, 
+.converted-amount input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    padding: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+.amount-input .p-inputwrapper, 
+.converted-amount .p-inputwrapper {
+    padding: 0;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.p-inputnumber {
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}

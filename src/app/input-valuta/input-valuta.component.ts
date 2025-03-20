@@ -10,7 +10,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
   styleUrl: './input-valuta.component.css'
 })
 export class InputValutaComponent {
-  @Input() currencyCode: string = '';
+  @Input() currencyCode!: string;
   @Input() placeholder: string = 'Inserisci importo';
   @Input() value: number | undefined = undefined;  
   @Output() valueChange = new EventEmitter<number>();  
@@ -20,3 +20,5 @@ export class InputValutaComponent {
   }
   
 }
+
+

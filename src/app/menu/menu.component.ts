@@ -7,13 +7,12 @@ import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-menu',
-  standalone: true,
   imports: [CommonModule, FormsModule, SelectModule,DropdownModule],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  @Input() selectedCurrency: string = 'USD';
+  @Input() selectedCurrency!: string;
   @Output() selectedCurrencyChange = new EventEmitter<string>();
   currencies: { code: string }[] = [];
 
@@ -59,6 +58,7 @@ export class MenuComponent implements OnInit {
 
   onCurrencyChange(newCurrency: string) {
     this.selectedCurrency = newCurrency;
-    this.selectedCurrencyChange.emit(this.selectedCurrency);
+    this.selectedCurrencyChange.emit(newCurrency);
   }
+  
 }  

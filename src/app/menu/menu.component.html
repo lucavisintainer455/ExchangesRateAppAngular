@@ -11,13 +11,14 @@
     class="custom-dropdown"
 >
         
-        <!-- Template per l'elemento selezionato -->
-        <ng-template #selectedItem let-selectedOption>
-            <div class="dropdown-item" *ngIf="selectedOption">
-                <img class="flag-icon" [src]="'https://wise.com/web-art/assets/flags/' + selectedOption.code.toLowerCase() + '.svg'" />
-                <span>{{ selectedOption.code }}</span>
-            </div>
-        </ng-template>
+<!-- Template per l'elemento selezionato -->
+<ng-template let-selectedOption pTemplate="selectedItem">
+    <div class="dropdown-item" *ngIf="selectedOption">
+        <img class="flag-icon" [src]="'https://wise.com/web-art/assets/flags/' + selectedOption.code.toLowerCase() + '.svg'" />
+        <span>{{ selectedOption.code }}</span>
+    </div>
+</ng-template>
+
 
         <!-- Template per ogni elemento della lista -->
         <ng-template let-item pTemplate="item">
