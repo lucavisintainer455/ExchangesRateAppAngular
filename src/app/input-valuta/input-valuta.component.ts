@@ -16,7 +16,7 @@ export class InputValutaComponent {
   @Output() valueChange = new EventEmitter<number>();  
 
   onValueChange(newValue: number | null) {
-    this.valueChange.emit(newValue ?? undefined);
+    this.valueChange.emit(newValue ?? 0);
   }
   
 }

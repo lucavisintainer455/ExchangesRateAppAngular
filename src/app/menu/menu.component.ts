@@ -7,13 +7,14 @@ import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-menu',
-  imports: [CommonModule, FormsModule, SelectModule,DropdownModule],
+  imports: [CommonModule, FormsModule, DropdownModule],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  @Input() selectedCurrency!: string;
-  @Output() selectedCurrencyChange = new EventEmitter<string>();
+  @Input() selectedCurrency!: { code: string };
+  @Output() selectedCurrencyChange = new EventEmitter<{ code: string }>();
+
   currencies: { code: string }[] = [];
 
   ngOnInit() {
@@ -54,11 +55,15 @@ export class MenuComponent implements OnInit {
       { code: 'WST' }, { code: 'XCD' }, { code: 'XDR' }, { code: 'XPF' },
       { code: 'YER' }, { code: 'ZMW' }, { code: 'ZWL' }
     ];
+
+    // Imposta la valuta selezionata se non è già stata passata
+    if (!this.selectedCurrency) {
+      this.selectedCurrency = this.currencies.find(c => c.code === 'EUR') || this.currencies[0];
+    }
   }
 
-  onCurrencyChange(newCurrency: string) {
+  onCurrencyChange(newCurrency: { code: string }) {
     this.selectedCurrency = newCurrency;
     this.selectedCurrencyChange.emit(newCurrency);
   }
-  
-}  
+}

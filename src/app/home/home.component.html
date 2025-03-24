@@ -22,16 +22,17 @@
     <!-- Input Importo da Convertire -->
     <div class="amount-input">
         <app-input-valuta
-            [(value)]="amountFrom" 
-            placeholder="Importo da convertire"
-            (ngModelChange)="convertCurrency()">
-        </app-input-valuta>
+        [(value)]="amountFrom" 
+        placeholder="Importo da convertire"
+        (valueChange)="convertCurrency()">
+    </app-input-valuta>
+    
     </div>
     
     <!-- Menu Valuta Sinistra -->
-    <div class="menu-left">
-        <app-menu [(selectedCurrency)]="selectedCurrencyFrom" (selectedCurrencyChange)="convertCurrency()"></app-menu>
-    </div>
+<div class="menu-left">
+    <app-menu [(selectedCurrency)]="selectedCurrencyFrom" (selectedCurrencyChange)="convertCurrency()"></app-menu>    
+</div>
     
     <!-- Pulsante Swap -->
     <div class="swap-button">
@@ -40,8 +41,6 @@
         </button>
     </div>
     
-    
-
     <!-- Importo Convertito (PrimeNG) -->
     <div class="converted-amount">
         <p-inputnumber 
@@ -52,7 +51,6 @@
     </div>
     
     <!-- Menu Valuta Destra -->
-    <div class="menu-right">
-        <app-menu [(selectedCurrency)]="selectedCurrencyTo" (selectedCurrencyChange)="convertCurrency()"></app-menu>
-    </div>
+    <div class="menu-right">        
+        <app-menu [(selectedCurrency)]="selectedCurrencyTo" (selectedCurrencyChange)="convertCurrency()"></app-menu>     
 </div>

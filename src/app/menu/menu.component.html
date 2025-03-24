@@ -2,31 +2,29 @@
     <p-dropdown 
     [options]="currencies" 
     [(ngModel)]="selectedCurrency"
-    (ngModelChange)="onCurrencyChange($event)"
+    (onChange)="onCurrencyChange($event.value)"
     optionLabel="code" 
     [filter]="true" 
     filterBy="code" 
-    [showClear]="true" 
+    [showClear]="false" 
     placeholder="Seleziona valuta" 
-    class="custom-dropdown"
->
-        
-<!-- Template per l'elemento selezionato -->
-<ng-template let-selectedOption pTemplate="selectedItem">
-    <div class="dropdown-item" *ngIf="selectedOption">
-        <img class="flag-icon" [src]="'https://wise.com/web-art/assets/flags/' + selectedOption.code.toLowerCase() + '.svg'" />
-        <span>{{ selectedOption.code }}</span>
-    </div>
-</ng-template>
+    class="custom-dropdown">
 
+    <!-- Template per l'elemento selezionato -->
+    <ng-template let-selectedOption pTemplate="selectedItem">
+        <div class="dropdown-item" *ngIf="selectedOption">
+            <img class="flag-icon" [src]="'https://wise.com/web-art/assets/flags/' + selectedOption.code.toLowerCase() + '.svg'" />
+            <span>{{ selectedOption.code }}</span>
+        </div>
+    </ng-template>
 
-        <!-- Template per ogni elemento della lista -->
-        <ng-template let-item pTemplate="item">
-            <div class="dropdown-item">
-                <img class="flag-icon" [src]="'https://wise.com/web-art/assets/flags/' + item.code.toLowerCase() + '.svg'" />
-                <span>{{ item.code }}</span>
-            </div>
-        </ng-template>
+    <!-- Template per ogni elemento della lista -->
+    <ng-template let-item pTemplate="item">
+        <div class="dropdown-item">
+            <img class="flag-icon" [src]="'https://wise.com/web-art/assets/flags/' + item.code.toLowerCase() + '.svg'" />
+            <span>{{ item.code }}</span>
+        </div>
+    </ng-template>
 
-    </p-dropdown>
+</p-dropdown>
 </div>
