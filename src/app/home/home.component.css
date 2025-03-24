@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+body {
+    background-color: #f4f6f9;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
 h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
+    font-size: 3.8rem;
     color: #0a1931;
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -14,62 +20,66 @@ h1 {
     transform: translateX(-50%);
     width: 100%;
     margin: 0;
-    padding: 0;
 }
 
 .navbar {
     background-color: inherit;
-    margin-top: 100px;
-    padding: 0;
-}
-
-.navbar .navbar-nav {
-    margin: 0 auto;
-    text-align: center;
+    margin-top: 80px;
     padding: 0;
 }
 
 .exchange-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 150px;
+    justify-content: space-between; /* Distribuisce gli elementi in modo uniforme */
+    gap: 15px; /* Stesso spazio tra tutti gli elementi */
+    margin-top: 180px;
     width: 100%;
-    padding: 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.amount-input, .converted-amount {
+/* ---- LAYOUT ---- */
+.amount-input,
+.converted-amount {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: auto;
+    min-width: 160px;
     margin: 0;
-    padding: 0;
-    width: 100%;
+    padding: 10px;
 }
 
+/* ---- MENU SINISTRA E DESTRA ---- */
 .menu-left, .menu-right {
-    flex: 0.5;
+    flex: 0.4;
     display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
+    align-items: center;
+    justify-content: center; /* Modificato per essere uguale */
 }
 
-app-input-valuta, app-menu {
-    width: 100%;
-    max-width: 200px;
-    margin: 0;
-    padding: 0;
+.menu-left {
+    justify-content: flex-end;
 }
 
+.menu-right {
+    justify-content: flex-start;
+}
+
+/* ---- SWAP BUTTON ---- */
 .swap-button {
+    flex: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
-    padding: 0;
+    margin-left: 17px;
 }
 
 .swap-button button {
@@ -77,64 +87,176 @@ app-input-valuta, app-menu {
     border: none;
     color: white;
     font-size: 20px;
-    padding: 6px;
+    padding: 8px;
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
-    width: 35px;
-    height: 35px;
+    transition: 0.3s ease-in-out;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .swap-button button:hover {
     background: #1e3a8a;
-    color: white;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
 }
 
-.material-symbols-outlined {
-    font-size: 28px;
-    margin: 0;
-    padding: 0;
+/* ---- INPUT E MENU ---- */
+app-input-valuta,
+app-menu {
+    width: 100%;
+    max-width: 180px;
 }
 
-.amount-input p-inputnumber, 
-.converted-amount p-inputnumber {
+.p-inputnumber,
+.currency-input {
     width: 100%;
     max-width: 150px;
-    text-align: center;
-    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    padding: 0;
+    padding: 5px;
 }
 
-.amount-input input, 
-.converted-amount input {
+.p-inputtext {
     width: 100%;
     text-align: center;
-    border: none;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
     outline: none;
-    padding: 0;
-    box-shadow: none;
-    margin: 0;
+    transition: border 0.3s ease-in-out;
 }
 
-.amount-input .p-inputwrapper, 
-.converted-amount .p-inputwrapper {
-    padding: 0;
-    border: none;
+.p-inputtext:focus {
+    border-color: #1e3a8a;
+    box-shadow: 0px 0px 5px rgba(30, 58, 138, 0.5);
+}
+
+/* ---- DROPDOWN MENU ---- */
+.currency-selector {
+    width: 100%;
+    max-width: 120px;
+}
+
+.custom-dropdown {
+    width: 100%;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 6px;
+}
+
+.p-dropdown-label {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+/* ---- MEDIA QUERY ---- */
+@media (max-width: 768px) {
+    .exchange-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu-left, .menu-right {
+        justify-content: center;
+    }
+
+/* ---- INPUT E MENU ---- */
+.amount-input, .converted-amount {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: auto;
+    min-width: 160px;
     margin: 0;
+    padding: 10px;
 }
 
-.p-inputnumber {
-    border: none !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    margin: 0 !important;
+    .swap-button button {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+    background: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.input-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #5f6368;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.amount-input, .converted-amount {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    min-width: 180px;
+}
+
+app-input-valuta {
+    width: 100%;
+    max-width: 180px;
+}
+
+.p-inputtext {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px 0;
+}
+
+.input-wrapper:focus-within {
+    box-shadow: 0px 0px 8px rgba(30, 58, 138, 0.3);
+    border: 1px solid #1e3a8a;
+}
+
+}
+
+    
+.input-label,  
+.input-label2 {  
+    position: absolute;  
+    top: 315px;
+    font-size: 12px;  
+    font-weight: normal; 
+    color: #413f3f; 
+    text-transform: capitalize; 
+    letter-spacing: 0.5px;  
+    background: white;  
+    padding: 2px 5px;  
+}  
+
+.input-label {  
+    left: 505px; 
+}  
+
+.input-label2 {  
+    left: 930px; 
+}  

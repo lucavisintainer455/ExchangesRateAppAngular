@@ -1,6 +1,7 @@
 <div class="currency-input">
     <p-inputNumber 
         [(ngModel)]="value" 
+        [locale]="'en-US'"
         [placeholder]="placeholder" 
         mode="decimal" 
         [minFractionDigits]="2" 
@@ -9,3 +10,6 @@
     ></p-inputNumber>
     <span class="currency-code">{{ currencyCode }}</span>
 </div>
+
+
+

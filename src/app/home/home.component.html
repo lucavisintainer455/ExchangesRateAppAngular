@@ -19,38 +19,44 @@
 </nav>     
 
 <div class="exchange-container">
-    <!-- Input Importo da Convertire -->
+    <!-- Input Importo da Convertire (Sinistra) -->
+    <label class="input-label">Importo</label>
     <div class="amount-input">
         <app-input-valuta
-        [(value)]="amountFrom" 
-        placeholder="Importo da convertire"
-        (valueChange)="convertCurrency()">
-    </app-input-valuta>
-    
+            [(value)]="amountFrom" 
+            (valueChange)="convertCurrencyFromLeft($event)">
+        </app-input-valuta>
     </div>
     
     <!-- Menu Valuta Sinistra -->
-<div class="menu-left">
-    <app-menu [(selectedCurrency)]="selectedCurrencyFrom" (selectedCurrencyChange)="convertCurrency()"></app-menu>    
+    <div class="menu-left">
+        <app-menu 
+        [(selectedCurrency)]="selectedCurrencyFrom"
+        (selectedCurrencyChange)="convertCurrency()">
+        </app-menu>
+    </div>
+
+<!-- Pulsante Swap -->
+<div class="swap-button">
+    <button (click)="swapCurrencies()">
+        <span class="material-symbols-outlined">swap_horiz</span>
+    </button>
 </div>
-    
-    <!-- Pulsante Swap -->
-    <div class="swap-button">
-        <button (click)="swapCurrencies()">
-            <span class="material-symbols-outlined">swap_horiz</span>
-        </button>
-    </div>
-    
-    <!-- Importo Convertito (PrimeNG) -->
-    <div class="converted-amount">
-        <p-inputnumber 
-            inputId="integeronly" 
-            [disabled]="true" 
-            [(ngModel)]="convertedAmount">
-        </p-inputnumber>
-    </div>
-    
-    <!-- Menu Valuta Destra -->
-    <div class="menu-right">        
-        <app-menu [(selectedCurrency)]="selectedCurrencyTo" (selectedCurrencyChange)="convertCurrency()"></app-menu>     
+
+<!-- Input Importo Convertito (Destra) -->
+<label class="input-label2">Convertito in</label>
+<div class="converted-amount">
+    <app-input-valuta
+        [(value)]="amountTo"
+        (valueChange)="convertCurrencyFromRight($event)">
+    </app-input-valuta>
+</div>
+
+<!-- Menu Valuta Destra -->
+<div class="menu-right">
+    <app-menu 
+    [(selectedCurrency)]="selectedCurrencyTo"
+    (selectedCurrencyChange)="convertCurrency()">
+    </app-menu>
+</div>
 </div>
