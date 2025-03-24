@@ -21,4 +21,14 @@ export class ExchangeRateService {
       })
     );
   }
+  getLastUpdate(baseCurrency: string): Observable<string> {
+    return this.http.get<any>(`${this.apiUrl}${baseCurrency}`).pipe(
+      map(response => response.time_last_update_utc), // Estrai la data di aggiornamento
+      catchError(error => {
+        console.error('Errore nel recupero della data di aggiornamento:', error);
+        throw error;
+      })
+    );
+  }
+  
 }
