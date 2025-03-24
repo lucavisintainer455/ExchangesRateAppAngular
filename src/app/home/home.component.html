@@ -61,6 +61,9 @@
     </app-menu>
 </div>
 
+</div>
+
+
 <!-- Tasso di cambio attuale -->
 <div class="exchange-rate-display">
     <p>
@@ -69,5 +72,15 @@
         {{ selectedCurrencyTo.code }}
     </p>
 </div>
+
+<!-- Contenitore con posizione relativa -->
+<div class="fav-container">
+    <!-- Stella posizionata in modo assoluto -->
+    <div (click)="toggleFavorite()" class="fav-icon">
+        <i [class.pi-star]="!isFavorite()" [class.pi-star-fill]="isFavorite()" class="pi"></i>
+    </div>
 </div>
+
+
+
 

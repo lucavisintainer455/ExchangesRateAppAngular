@@ -3,6 +3,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ExchangeRateService } from './services/exchange-rate.service';
 
+
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, InputNumberModule],

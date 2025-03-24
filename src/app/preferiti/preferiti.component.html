@@ -13,3 +13,18 @@
 <div class="container">
     <router-outlet></router-outlet>
 </div>
+
+<h1>Preferiti</h1>
+
+<div *ngIf="favorites && favorites.length > 0; else noFavorites">
+  <ul class="favorites-list">
+    <li *ngFor="let fav of favorites; let i = index">
+      <span>{{ fav.from }} → {{ fav.to }}</span>
+      <button (click)="removeFavorite(i)">❌</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noFavorites>
+  <p>Non hai ancora aggiunto preferiti.</p>
+</ng-template>
