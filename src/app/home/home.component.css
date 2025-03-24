@@ -42,6 +42,7 @@ h1 {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 40px;
 }
 
 /* ---- LAYOUT ---- */
@@ -237,6 +238,7 @@ app-input-valuta {
     border: 1px solid #1e3a8a;
 }
 
+
 }
 
     
@@ -249,7 +251,6 @@ app-input-valuta {
     color: #413f3f; 
     text-transform: capitalize; 
     letter-spacing: 0.5px;  
-    background: white;  
     padding: 2px 5px;  
 }  
 
@@ -260,3 +261,17 @@ app-input-valuta {
 .input-label2 {  
     left: 930px; 
 }  
+
+.exchange-rate-display {
+    position: absolute;
+    top: 400px;
+    right: 1075px;
+    font-size: 15px;  
+    font-weight: 550;
+    color: #413f3f; 
+    text-transform: capitalize; 
+    letter-spacing: 0.5px;  
+    padding: 2px 5px; 
+}
+
+
