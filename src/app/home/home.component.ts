@@ -4,7 +4,7 @@ import { MenuComponent } from "../menu/menu.component";
 import { InputValutaComponent } from "../input-valuta/input-valuta.component";
 import { InputNumberModule } from 'primeng/inputnumber'; 
 import { FormsModule } from '@angular/forms';
-
+import { ExchangeRateService } from '../services/exchange-rate.service';
 
 @Component({
   selector: 'app-home',
@@ -14,28 +14,36 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.component.css'
 }) 
 export class HomeComponent {
-  amountFrom: number = 1;  // Imposta di default 1 EUR
+  amountFrom: number = 1;
   amountTo: number | undefined;
-  selectedCurrencyFrom = { code: 'EUR' };  // Impostiamo come oggetto
-  selectedCurrencyTo = { code: 'USD' };    // Impostiamo come oggetto
-  exchangeRate: number = 1.087; // EUR -> USD
+  selectedCurrencyFrom = { code: 'EUR' };
+  selectedCurrencyTo = { code: 'USD' };
+  exchangeRate: number = 1; 
+  exchangeRates: { [key: string]: number } = {};
 
-  exchangeRates: { [key: string]: number } = {
-    'USD': 1, 'EUR': 0.92, 'GBP': 0.78, 'JPY': 150.34
-  };
-
-  constructor() {
-    this.convertCurrency();
+  constructor(private exchangeRateService: ExchangeRateService) {
+    this.fetchExchangeRates();
   }
 
-  // Conversione da sinistra (utente modifica "amountFrom")
+  fetchExchangeRates() {
+    this.exchangeRateService.getExchangeRates(this.selectedCurrencyFrom.code).subscribe(
+      rates => {
+        this.exchangeRates = rates;
+        this.updateExchangeRate();
+        this.convertCurrency();
+      },
+      error => {
+        console.error('Errore nel caricamento dei tassi di cambio:', error);
+      }
+    );
+  }
+
   convertCurrencyFromLeft(value: number) {
     this.amountFrom = value;
     this.updateExchangeRate();
     this.amountTo = this.amountFrom * this.exchangeRate;
   }
 
-  // Conversione da destra (utente modifica "amountTo")
   convertCurrencyFromRight(value: number) {
     this.amountTo = value;
     this.updateExchangeRate();
@@ -48,11 +56,10 @@ export class HomeComponent {
     this.exchangeRate = toRate / fromRate;
   }
 
-  // Swap delle valute e aggiornamento
   swapCurrencies() {
     [this.selectedCurrencyFrom, this.selectedCurrencyTo] = [this.selectedCurrencyTo, this.selectedCurrencyFrom];
-    [this.amountFrom, this.amountTo] = [this.amountTo || 0, this.amountFrom || 0]; // Swap dei valori
-    this.convertCurrency(); // Aggiorna i valori
+    [this.amountFrom, this.amountTo] = [this.amountTo || 0, this.amountFrom || 0];
+    this.fetchExchangeRates();
   }
 
   convertCurrency() {
