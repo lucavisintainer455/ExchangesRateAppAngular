@@ -67,13 +67,6 @@
     </div>
 </div>
 
-<!-- Contenitore con posizione relativa per la stella -->
-<div class="fav-container">
-    <div (click)="toggleFavorite()" class="fav-icon">
-        <i [class.pi-star]="!isFavorite()" [class.pi-star-fill]="isFavorite()" class="pi"></i>
-    </div>
-</div>
-
 <!-- Contenitore per il rate -->
 <div class="rate-container">
     <div class="rate">
@@ -82,5 +75,17 @@
             {{ exchangeRate | number:'1.4-4' }} 
             {{ selectedCurrencyTo.code }}
         </p>
+    </div>
+</div>
+
+<!-- Nuovo elemento "Cerca per paese" usando PrimeNG p-button -->
+<div class="country-search-container">
+    <p-button label="Cerca per paese" [routerLink]="['/cerca-paese']" [link]="true"></p-button>
+</div>
+
+<!-- Contenitore con posizione relativa per la stella -->
+<div class="fav-container">
+    <div (click)="toggleFavorite()" class="fav-icon">
+        <i [class.pi-star]="!isFavorite()" [class.pi-star-fill]="isFavorite()" class="pi"></i>
     </div>
 </div>
