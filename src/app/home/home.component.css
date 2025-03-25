@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import "primeicons/primeicons.css";
 
-
 body {
     background-color: #f4f6f9;
     margin: 0;
@@ -26,16 +25,37 @@ h1 {
 
 .navbar {
     background-color: inherit;
-    margin-top: 80px;
+    margin-top: 100px; /* Distanza dal titolo */
     padding: 0;
+    display: flex; /* Usa il flexbox per allineare gli elementi */
+    justify-content: center; /* Centra la navbar orizzontalmente */
+    width: 100%; /* Occupa tutta la larghezza disponibile */
+    position: relative;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: center; /* Centra il contenuto dentro la navbar */
+    width: 100%; /* Assicura che il contenitore prenda tutta la larghezza disponibile */
+}
+
+.navbar-nav {
+    display: flex; /* Usa flexbox per i link della navbar */
+    justify-content: center; /* Centra i link della navbar */
+    padding: 0; /* Rimuove eventuali padding extra */
+    margin: 0; /* Rimuove eventuali margini extra */
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px; /* Distanza uniforme tra gli elementi del menu */
 }
 
 .exchange-container {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Distribuisce gli elementi in modo uniforme */
-    gap: 15px; /* Stesso spazio tra tutti gli elementi */
-    margin-top: 180px;
+    gap: -2px; /* Stesso spazio tra tutti gli elementi */
+    margin-top: 165px;
     width: 100%;
     max-width: 800px;
     margin-left: auto;
@@ -47,7 +67,6 @@ h1 {
     padding-bottom: 40px;
 }
 
-/* ---- LAYOUT ---- */
 .amount-input,
 .converted-amount {
     flex: 1;
@@ -60,12 +79,11 @@ h1 {
     padding: 10px;
 }
 
-/* ---- MENU SINISTRA E DESTRA ---- */
 .menu-left, .menu-right {
     flex: 0.4;
     display: flex;
     align-items: center;
-    justify-content: center; /* Modificato per essere uguale */
+    justify-content: center;
 }
 
 .menu-left {
@@ -76,7 +94,6 @@ h1 {
     justify-content: flex-start;
 }
 
-/* ---- SWAP BUTTON ---- */
 .swap-button {
     flex: 0;
     display: flex;
@@ -107,7 +124,6 @@ h1 {
     transform: scale(1.1);
 }
 
-/* ---- INPUT E MENU ---- */
 app-input-valuta,
 app-menu {
     width: 100%;
@@ -141,7 +157,6 @@ app-menu {
     box-shadow: 0px 0px 5px rgba(30, 58, 138, 0.5);
 }
 
-/* ---- DROPDOWN MENU ---- */
 .currency-selector {
     width: 100%;
     max-width: 120px;
@@ -160,7 +175,6 @@ app-menu {
     padding: 8px;
 }
 
-/* ---- MEDIA QUERY ---- */
 @media (max-width: 768px) {
     .exchange-container {
         flex-direction: column;
@@ -171,83 +185,33 @@ app-menu {
         justify-content: center;
     }
 
-/* ---- INPUT E MENU ---- */
-.amount-input, .converted-amount {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    min-width: 160px;
-    margin: 0;
-    padding: 10px;
-}
+    .amount-input, .converted-amount {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        min-width: 160px;
+        margin: 0;
+        padding: 10px;
+    }
 
     .swap-button button {
         width: 35px;
         height: 35px;
         font-size: 18px;
     }
-    
-    .input-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+}
+
+.input-container {
     position: relative;
-    background: white;
-    padding: 10px 14px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.input-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: #5f6368;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.amount-input, .converted-amount {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    min-width: 180px;
 }
 
-app-input-valuta {
-    width: 100%;
-    max-width: 180px;
-}
-
-.p-inputtext {
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 5px 0;
-}
-
-.input-wrapper:focus-within {
-    box-shadow: 0px 0px 8px rgba(30, 58, 138, 0.3);
-    border: 1px solid #1e3a8a;
-}
-
-
-}
-
-    
-.input-label,  
+.input-label,
 .input-label2 {  
     position: absolute;  
-    top: 315px;
+    top: 0;
     font-size: 12px;  
     font-weight: normal; 
     color: #413f3f; 
@@ -257,31 +221,35 @@ app-input-valuta {
 }  
 
 .input-label {  
-    left: 505px; 
-}  
-
-.input-label2 {  
-    left: 930px; 
-}  
-
-.exchange-rate-display {
-    position: absolute;
-    top: 400px;
-    right: 1075px;
-    font-size: 15px;  
-    font-weight: 550;
+    position: absolute;  
+    top: -5px;
+    left: 13px;
+    font-size: 12px;  
+    font-weight: normal; 
     color: #413f3f; 
     text-transform: capitalize; 
     letter-spacing: 0.5px;  
-    padding: 2px 5px; 
+    padding: 2px 5px;  
+}  
+
+.input-label2 {  
+    position: absolute;  
+    top: -5px;
+    left: 13px;
+    font-size: 12px;  
+    font-weight: normal; 
+    color: #413f3f; 
+    text-transform: capitalize; 
+    letter-spacing: 0.5px;  
+    padding: 2px 5px;  
 }
 
 
 .container_ {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distribuisce gli elementi in modo uniforme */
-    gap: 15px; /* Stesso spazio tra tutti gli elementi */
+    justify-content: space-between; 
+    gap: 15px;
     margin-top: 180px;
     width: 100%;
     max-width: 800px;
@@ -301,10 +269,28 @@ app-input-valuta {
 .fav-icon {
     position: absolute;
     top: -33px; 
-    right: 180px; 
+    right: 175px; 
     cursor: pointer;
 }
 
 .fav-icon i {
     font-size: 20px;
+}
+
+.rate-container{
+    position: relative; 
+    width: 100%; /* Impostiamo la larghezza al 100% */
+    margin-top: 20px; /* Distanza dal resto del contenuto */
+}
+
+.rate {
+    position: absolute;
+    top: -60px; /* Imposta la distanza verticale dal top della pagina */
+    left: 187px; /* Posiziona il tasso di cambio a sinistra */
+    font-size: 15px;
+    font-weight: 550;
+    color: #413f3f;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    padding: 2px 5px;
 }

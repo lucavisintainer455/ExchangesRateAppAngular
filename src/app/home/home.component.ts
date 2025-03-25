@@ -6,12 +6,14 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
 import { ExchangeRateService } from '../services/exchange-rate.service';
 import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, MenuComponent, InputValutaComponent,InputNumberModule,FormsModule,CommonModule],
+  imports: [RouterLink, RouterOutlet, MenuComponent, InputValutaComponent,InputNumberModule,FormsModule,CommonModule,ButtonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 }) 
