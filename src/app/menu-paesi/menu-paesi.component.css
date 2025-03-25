@@ -1,0 +1,52 @@
+/* Contenitore principale del dropdown */
+.currency-selector {
+    width: 100%;
+    max-width: 100px; 
+    min-width: 150px; 
+  }
+  
+  /* Stile personalizzato del dropdown */
+  .custom-dropdown {
+    width: 100%;
+    border-radius: 6px;
+    font-size: 13px; 
+    min-height: 32px; 
+  }
+  
+  /* Stile per l'elemento selezionato */
+  .p-dropdown-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px;
+    padding: 8px 4px;
+  }
+  
+  /* Stile per il menu dropdown */
+  .p-dropdown-panel {
+    border-radius: 6px;
+    min-width: 140px; 
+  }
+  
+  /* Elemento della lista dropdown */
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    font-size: px;
+  }
+  
+  /* Effetto hover sugli elementi della lista */
+  .dropdown-item:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+  }
+  
+  /* Bandiera */
+  .flag-icon {
+    width: 20px;
+    height: auto;
+    border-radius: 3px;
+  }
+  
+  
