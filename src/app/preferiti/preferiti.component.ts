@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-preferiti',
@@ -22,9 +23,14 @@ export class PreferitiComponent implements OnInit {
       this.favorites = JSON.parse(storedFavorites);
     }
   }
-
+  constructor(private router: Router) {}
   removeFavorite(index: number) {
     this.favorites.splice(index, 1);
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
+
+  goToDetails(fav: any): void {
+    this.router.navigate(['/preferito', fav.from + '-' + fav.to], { state: { favorite: fav } }); 
+  }
+  
 }

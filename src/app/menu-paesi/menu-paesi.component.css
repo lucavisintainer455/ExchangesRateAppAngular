@@ -30,3 +30,9 @@
   cursor: pointer;
 }
 
+/* Imposta la larghezza del select */
+.p-dropdown {
+  width: auto !important;  /* Imposta la larghezza automatica */
+  min-width: 1px;  /* Imposta una larghezza minima, se necessario */
+}
+
