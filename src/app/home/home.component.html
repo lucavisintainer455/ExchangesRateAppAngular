@@ -8,11 +8,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <!-- Using PrimeNG p-button for Info -->
+            <!-- Pulsante Info: rimane invariato -->
             <li class="nav-item">
                 <p-button label="Info" [raised]="true" severity="secondary" [routerLink]="['/info']"></p-button>
             </li>
-            <!-- Using PrimeNG p-button for Preferiti -->
+            <!-- Pulsante Preferiti: rimane invariato -->
             <li class="nav-item">
                 <p-button label="Preferiti" [raised]="true" severity="secondary" [routerLink]="['/preferiti']"></p-button>
             </li>                                                          
@@ -34,10 +34,18 @@
 
     <!-- Menu Valuta Sinistra -->
     <div class="menu-left">
-        <app-menu 
-        [(selectedCurrency)]="selectedCurrencyFrom"
-        (selectedCurrencyChange)="convertCurrency()">
-        </app-menu>
+        <ng-container *ngIf="!useCountryMode; else countryMenuLeft">
+            <app-menu 
+                [(selectedCurrency)]="selectedCurrencyFrom"
+                (selectedCurrencyChange)="convertCurrency()">
+            </app-menu>
+        </ng-container>
+        <ng-template #countryMenuLeft>
+            <app-menu-paesi 
+                [(selectedCurrency)]="selectedCurrencyFrom"
+                (selectedCurrencyChange)="convertCurrency()">
+            </app-menu-paesi>
+        </ng-template>
     </div>
 
     <!-- Pulsante Swap -->
@@ -60,14 +68,20 @@
 
     <!-- Menu Valuta Destra -->
     <div class="menu-right">
-        <app-menu 
-        [(selectedCurrency)]="selectedCurrencyTo"
-        (selectedCurrencyChange)="convertCurrency()">
-        </app-menu>
+        <ng-container *ngIf="!useCountryMode; else countryMenuRight">
+            <app-menu 
+                [(selectedCurrency)]="selectedCurrencyTo"
+                (selectedCurrencyChange)="convertCurrency()">
+            </app-menu>
+        </ng-container>
+        <ng-template #countryMenuRight>
+            <app-menu-paesi 
+                [(selectedCurrency)]="selectedCurrencyTo"
+                (selectedCurrencyChange)="convertCurrency()">
+            </app-menu-paesi>
+        </ng-template>
     </div>
 </div>
-
-
 
 <!-- Contenitore per il rate -->
 <div class="rate-container">
@@ -80,9 +94,9 @@
     </div>
 </div>
 
-<!-- Nuovo elemento "Cerca per paese" usando PrimeNG p-button -->
+<!-- Pulsante "Cerca per valuta" con [link]="true" -->
 <div class="country-search-container">
-    <p-button label="Cerca per paese" [routerLink]="['/cerca-paese']" [link]="true"></p-button>
+    <p-button label="{{ useCountryMode ? 'Cerca per valuta' : 'Cerca per paese' }}" [link]="true" (click)="toggleMode()"></p-button>
 </div>
 
 <!-- Contenitore con posizione relativa per la stella -->
