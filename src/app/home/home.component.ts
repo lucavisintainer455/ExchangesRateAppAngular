@@ -123,7 +123,6 @@ export class HomeComponent {
     this.amountFrom = this.amountTo / this.exchangeRate;
   }
 
-  // Funzione per aggiungere o rimuovere i preferiti
   toggleFavorite() {
     const pair = { from: this.selectedCurrencyFrom.code, to: this.selectedCurrencyTo.code };
     const index = this.favorites.findIndex(fav => fav.from === pair.from && fav.to === pair.to);
@@ -139,14 +138,15 @@ export class HomeComponent {
             currentRate: this.exchangeRate,       
             exchangeRateHistory: [this.exchangeRate],
             description: '',  // ✅ Campo aggiunto, inizialmente vuoto
-            addedDate: new Date().toISOString(),  // ✅ Data di aggiunta
-            lastModifiedDate: new Date().toISOString() // ✅ Ultima modifica
+            addedDate: new Date().toUTCString(),  // ✅ Data di aggiunta in formato GMT
+            lastModifiedDate: new Date().toUTCString() // ✅ Ultima modifica in formato GMT
         };
 
         this.favorites.push(newFavorite);
         localStorage.setItem('favorites', JSON.stringify(this.favorites));
     }
 }
+
 
 
 

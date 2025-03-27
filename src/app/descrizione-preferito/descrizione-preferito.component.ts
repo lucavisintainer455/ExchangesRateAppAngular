@@ -100,7 +100,7 @@ formatExchangeRate(rate: number): string {
     if (!this.favorite) return;
   
     this.favorite.description = this.editedDescription;
-    this.favorite.lastModifiedDate = new Date().toISOString();
+    this.favorite.lastModifiedDate = new Date().toUTCString(); // Modifica la data in formato GMT
   
     const storedFavorites: any[] = JSON.parse(localStorage.getItem('favorites') || '[]');
     const index = storedFavorites.findIndex(fav => fav.from === this.favorite.from && fav.to === this.favorite.to);
@@ -111,34 +111,60 @@ formatExchangeRate(rate: number): string {
     }
   
     this.isEditing = false;
+}
+
+
+initChart() {
+  if (!this.favorite || !this.favorite.exchangeRateAtAdd) {
+      console.warn("Dati del grafico mancanti, impossibile inizializzare.");
+      return;
   }
 
-  initChart() {
-    if (!this.favorite || !this.favorite.exchangeRateAtAdd) {
-        console.warn("Dati del grafico mancanti, impossibile inizializzare.");
-        return;
-    }
+  const initialRate = Number(this.favorite.exchangeRateAtAdd);
+  const currentRate = this.favorite.currentRate ? Number(this.favorite.currentRate) : null;
 
-    const initialRate = Number(this.favorite.exchangeRateAtAdd);
-    const currentRate = this.favorite.currentRate ? Number(this.favorite.currentRate) : null;
+  // Prepara le etichette per il grafico, visualizzando solo la data senza ora
+  const labels = [
+      this.formatDate(this.favorite.addedDate),  // Data di aggiunta (data originale)
+      currentRate ? this.formatDate(new Date().toISOString()) : null  // Data attuale (se esiste)
+  ];
 
-    console.log("Tasso iniziale salvato:", initialRate);
-    console.log("Tasso attuale ricevuto:", currentRate);
+  this.chartData = {
+      labels: labels,
+      datasets: [
+          {
+              data: currentRate ? [initialRate, currentRate] : [initialRate],
+              fill: false,
+              tension: 0.4,
+              borderColor: '#42A5F5',
+              pointBackgroundColor: '#42A5F5',
+              pointRadius: 5
+          }
+      ]
+  };
 
-    this.chartData = {
-        labels: ['Tasso iniziale', ...(currentRate ? ['Tasso attuale'] : [])],
-        datasets: [
-            {
-                data: currentRate ? [initialRate, currentRate] : [initialRate], 
-                fill: false,
-                tension: 0.4,
-                borderColor: '#42A5F5',
-                pointBackgroundColor: '#42A5F5',
-                pointRadius: 5
-            }
-        ]
-    };
+  // Aggiungi le opzioni per disabilitare la legenda
+  this.chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+          legend: {
+              display: false  // Disabilita la legenda
+          }
+      },
+      scales: {
+          x: { ticks: { color: '#495057' }, grid: { color: '#ebedef' } },
+          y: { ticks: { color: '#495057' }, grid: { color: '#ebedef' } }
+      }
+  };
 }
+
+// Funzione di formato per visualizzare solo la data senza ora
+formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString();  // Restituisce solo la data (senza l'ora)
+}
+
 
 
   
