@@ -14,9 +14,16 @@
 <div class="container">
   <div class="grid">
       <!-- Colonna immagine valuta -->
-      <div class="currency-img-container">
-          <img src="https://static.vecteezy.com/ti/vettori-gratis/p1/8385302-dollaro-americano-icona-usa-tonda-metallo-moneta-contanti-simbolo-valuta-illustrazione-isolata-su-sfondo-bianco-denaro-europeo-schizzo-banca-pagamento-segno-bianco-e-nero-cent-vettoriale.jpg" alt="Valuta" class="currency-img">
-      </div>
+<!-- Colonna immagine valuta (Da) -->
+<div class="currency-img-container">
+  <img class="flag-icon" 
+       [src]="'https://wise.com/web-art/assets/flags/' + favorite.from.toLowerCase() + '.svg'" 
+       alt="{{ favorite.from }} valuta" 
+       class="currency-img">
+</div>
+
+
+
 
       <!-- Colonna dettagli preferito -->
       <div class="details-container">
@@ -44,5 +51,12 @@
               </ng-template>
           </p-card>
       </div>
+      <!-- Colonna immagine valuta (A) -->
+<div class="currency-img-container">
+  <img class="flag-icon" 
+       [src]="'https://wise.com/web-art/assets/flags/' + favorite.to.toLowerCase() + '.svg'" 
+       alt="{{ favorite.to }} valuta" 
+       class="currency-img">
+</div>
   </div>
 </div>
