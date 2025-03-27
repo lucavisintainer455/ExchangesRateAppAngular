@@ -1,0 +1,35 @@
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+.grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.currency-img-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.currency-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.details-container {
+    flex: 3;
+}
+
+.favorite-card {
+    width: 100%;
+    padding: 20px;
+}

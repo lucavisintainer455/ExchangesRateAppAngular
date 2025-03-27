@@ -1,30 +1,48 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/preferiti']">⬅</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  
-  <div class="container">
-    <h1>Dettagli Preferito</h1>
-  
-    <div *ngIf="favorite">
-      <p><strong>Da:</strong> {{ favorite.from }}</p>
-      <p><strong>A:</strong> {{ favorite.to }}</p>
-      <p><strong>Descrizione:</strong> {{ favorite.description || 'Nessuna descrizione' }}</p>
-      <p><strong>Data aggiunta:</strong> {{ favorite.addedDate }}</p>
-      <p><strong>Ultima modifica:</strong> {{ favorite.lastModifiedDate || 'Non ancora modificato' }}</p>
-      <p><strong>Tasso attuale:</strong> {{ favorite.rate || 'N/A' }}</p>
-  
-      <button (click)="editFavorite()" class="btn btn-warning">
-        Modifica
-      </button>
-    </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/preferiti']">⬅</a>
+      </li>
+    </ul>
   </div>
-  
+</nav>
+<h1>Dettaglio</h1>
+<div class="container">
+  <div class="grid">
+      <!-- Colonna immagine valuta -->
+      <div class="currency-img-container">
+          <img src="https://static.vecteezy.com/ti/vettori-gratis/p1/8385302-dollaro-americano-icona-usa-tonda-metallo-moneta-contanti-simbolo-valuta-illustrazione-isolata-su-sfondo-bianco-denaro-europeo-schizzo-banca-pagamento-segno-bianco-e-nero-cent-vettoriale.jpg" alt="Valuta" class="currency-img">
+      </div>
+
+      <!-- Colonna dettagli preferito -->
+      <div class="details-container">
+          <p-card class="favorite-card">
+              <ng-template pTemplate="content">
+                  <div class="details">
+                      <p><strong>Da:</strong> {{ favorite.from }}</p>
+                      <p><strong>A:</strong> {{ favorite.to }}</p>
+
+                      <p><strong>Descrizione:</strong>
+                          <span *ngIf="!isEditing">{{ favorite.description || 'Nessuna descrizione' }}</span>
+                          <input *ngIf="isEditing" [(ngModel)]="editedDescription" pInputText>
+                      </p>
+
+                      <p><strong>Data aggiunta:</strong> {{ favorite.addedDate }}</p>
+                      <p><strong>Ultima modifica:</strong> {{ favorite.lastModifiedDate || 'Non ancora modificato' }}</p>
+                      <p><strong>Tasso attuale:</strong> {{ favorite.rate || 'N/A' }}</p>
+                  </div>
+
+                  <p-divider></p-divider>
+
+                  <!-- Bottoni -->
+                  <button *ngIf="!isEditing" (click)="startEditing()" pButton type="button" label="Modifica" icon="pi pi-pencil" class="p-button-warning"></button>
+                  <button *ngIf="isEditing" (click)="saveFavorite()" pButton type="button" label="Salva" icon="pi pi-check" class="p-button-success"></button>
+              </ng-template>
+          </p-card>
+      </div>
+  </div>
+</div>
