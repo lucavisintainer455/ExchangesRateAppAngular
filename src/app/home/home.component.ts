@@ -18,6 +18,7 @@ interface Favorite {
   lastModifiedDate: string;
   exchangeRateAtAdd: number;
   exchangeRateHistory: number[];
+  currentRate?: number; 
 }
 
 @Component({
@@ -128,14 +129,26 @@ export class HomeComponent {
     const index = this.favorites.findIndex(fav => fav.from === pair.from && fav.to === pair.to);
 
     if (index > -1) {
-      // Se già esiste, aggiorniamo il tasso e la cronologia
-      this.updateFavoriteExchangeRate(this.favorites[index]);
-      this.favorites.splice(index, 1); // Rimuoviamo il preferito
+        this.updateFavoriteExchangeRate(this.favorites[index]);
+        this.favorites.splice(index, 1);
     } else {
-      // Aggiungiamo un nuovo preferito
-      this.addFavorite();
+        const newFavorite: Favorite = {
+            from: pair.from,
+            to: pair.to,
+            exchangeRateAtAdd: this.exchangeRate,  
+            currentRate: this.exchangeRate,       
+            exchangeRateHistory: [this.exchangeRate],
+            description: '',  // ✅ Campo aggiunto, inizialmente vuoto
+            addedDate: new Date().toISOString(),  // ✅ Data di aggiunta
+            lastModifiedDate: new Date().toISOString() // ✅ Ultima modifica
+        };
+
+        this.favorites.push(newFavorite);
+        localStorage.setItem('favorites', JSON.stringify(this.favorites));
     }
-  }
+}
+
+
 
   // Funzione per controllare se una coppia di valute è nei preferiti
   isFavorite(): boolean {
