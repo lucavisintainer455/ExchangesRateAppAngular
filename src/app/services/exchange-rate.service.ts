@@ -8,7 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class ExchangeRateService {
   private apiKey = '05b8520c971ffa18755ef5ab'; 
-  private apiUrl = `https://v6.exchangerate-api.comm/v6/${this.apiKey}/latest/`;
+  private apiUrl = `https://v6.exchangerate-api.com/v6/${this.apiKey}/latest/`;
 //.comm --> per non usare crediti api
   constructor(private http: HttpClient) {}
 

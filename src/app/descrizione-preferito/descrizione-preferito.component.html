@@ -10,53 +10,57 @@
     </ul>
   </div>
 </nav>
-<h1>Dettaglio</h1>
+
+<h1>Dettaglio Preferito</h1>
 <div class="container">
   <div class="grid">
-      <!-- Colonna immagine valuta -->
-<!-- Colonna immagine valuta (Da) -->
-<div class="currency-img-container">
-  <img class="flag-icon" 
-       [src]="'https://wise.com/web-art/assets/flags/' + favorite.from.toLowerCase() + '.svg'" 
-       alt="{{ favorite.from }} valuta" 
-       class="currency-img">
-</div>
+    <!-- Colonna immagine valuta (Da) -->
+    <div class="currency-img-container">
+      <img class="flag-icon" 
+           [src]="currencyImageFrom" 
+           alt="{{ favorite.from }} valuta" 
+           class="currency-img">
+    </div>
 
+    <!-- Colonna dettagli preferito -->
+    <div class="details-container">
+      <p-card class="favorite-card">
+        <ng-template pTemplate="content">
+          <div class="details">
+            <p><strong>Da:</strong> {{ favorite.from }}</p>
+            <p><strong>A:</strong> {{ favorite.to }}</p>
 
+            <p><strong>Descrizione:</strong>
+              <span *ngIf="!isEditing">{{ favorite.description || 'Nessuna descrizione' }}</span>
+              <input *ngIf="isEditing" [(ngModel)]="editedDescription" pInputText>
+            </p>
 
+            <p><strong>Data aggiunta:</strong> {{ favorite.addedDate }}</p>
+            <p><strong>Ultima modifica:</strong> {{ favorite.lastModifiedDate || 'Non ancora modificato' }}</p>
+            <p><strong>Tasso al momento dell'aggiunta:</strong> 
+              {{ favorite.exchangeRateAtAdd || 'N/A' }}
+            </p>
+            
+            <p><strong>Tasso attuale:</strong> 
+              {{ favorite.rate || 'N/A' }}
+            </p>
+          </div>
 
-      <!-- Colonna dettagli preferito -->
-      <div class="details-container">
-          <p-card class="favorite-card">
-              <ng-template pTemplate="content">
-                  <div class="details">
-                      <p><strong>Da:</strong> {{ favorite.from }}</p>
-                      <p><strong>A:</strong> {{ favorite.to }}</p>
+          <p-divider></p-divider>
 
-                      <p><strong>Descrizione:</strong>
-                          <span *ngIf="!isEditing">{{ favorite.description || 'Nessuna descrizione' }}</span>
-                          <input *ngIf="isEditing" [(ngModel)]="editedDescription" pInputText>
-                      </p>
+          <!-- Bottoni -->
+          <button *ngIf="!isEditing" (click)="startEditing()" pButton type="button" label="Modifica" icon="pi pi-pencil" class="p-button-warning"></button>
+          <button *ngIf="isEditing" (click)="saveFavorite()" pButton type="button" label="Salva" icon="pi pi-check" class="p-button-success"></button>
+        </ng-template>
+      </p-card>
+    </div>
 
-                      <p><strong>Data aggiunta:</strong> {{ favorite.addedDate }}</p>
-                      <p><strong>Ultima modifica:</strong> {{ favorite.lastModifiedDate || 'Non ancora modificato' }}</p>
-                      <p><strong>Tasso attuale:</strong> {{ favorite.rate || 'N/A' }}</p>
-                  </div>
-
-                  <p-divider></p-divider>
-
-                  <!-- Bottoni -->
-                  <button *ngIf="!isEditing" (click)="startEditing()" pButton type="button" label="Modifica" icon="pi pi-pencil" class="p-button-warning"></button>
-                  <button *ngIf="isEditing" (click)="saveFavorite()" pButton type="button" label="Salva" icon="pi pi-check" class="p-button-success"></button>
-              </ng-template>
-          </p-card>
-      </div>
-      <!-- Colonna immagine valuta (A) -->
-<div class="currency-img-container">
-  <img class="flag-icon" 
-       [src]="'https://wise.com/web-art/assets/flags/' + favorite.to.toLowerCase() + '.svg'" 
-       alt="{{ favorite.to }} valuta" 
-       class="currency-img">
-</div>
+    <!-- Colonna immagine valuta (A) -->
+    <div class="currency-img-container">
+      <img class="flag-icon" 
+           [src]="currencyImageTo" 
+           alt="{{ favorite.to }} valuta" 
+           class="currency-img">
+    </div>
   </div>
 </div>

@@ -9,14 +9,23 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { MenuPaesiComponent } from "../menu-paesi/menu-paesi.component";
 
-
+// Modello per i preferiti
+interface Favorite {
+  from: string;
+  to: string;
+  description: string;
+  addedDate: string;
+  lastModifiedDate: string;
+  exchangeRateAtAdd: number;
+  exchangeRateHistory: number[];
+}
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [RouterLink, RouterOutlet, MenuComponent, InputValutaComponent, InputNumberModule, FormsModule, CommonModule, ButtonModule, MenuPaesiComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 }) 
 export class HomeComponent {
   amountFrom: number = 1;
@@ -25,79 +34,38 @@ export class HomeComponent {
   selectedCurrencyTo = { code: 'USD' };
   exchangeRate: number = 1; 
   exchangeRates: { [key: string]: number } = {};
-  favorites: { from: string, to: string }[] = [];
+  favorites: Favorite[] = []; // Array di preferiti
 
-  useCountryMode: boolean = false; // Flag per controllare il menu attivo
+  useCountryMode: boolean = false; // Flag per controllare la modalità paese
 
   constructor(private exchangeRateService: ExchangeRateService) {
-    this.fetchExchangeRates();
-    this.loadFavorites();
+    this.fetchExchangeRates(); // Carica i tassi di cambio iniziali
+    this.loadFavorites(); // Carica i preferiti salvati nel localStorage
   }
 
-  toggleMode() {
-    this.useCountryMode = !this.useCountryMode;
+  // Funzione per aggiungere un nuovo preferito
+  addFavorite() {
+    const newFavorite: Favorite = {
+      from: this.selectedCurrencyFrom.code,
+      to: this.selectedCurrencyTo.code,
+      description: '', // inizialmente vuota
+      addedDate: new Date().toISOString(), // Data di aggiunta
+      lastModifiedDate: '', // inizialmente vuota
+      exchangeRateAtAdd: this.exchangeRate, // ✅ Salva il tasso al momento dell'aggiunta
+      exchangeRateHistory: [this.exchangeRate] // ✅ Cronologia dei tassi
+    };
+
+    // Aggiungi il nuovo preferito all'array
+    this.favorites.push(newFavorite);
+    this.saveFavorites(); // Salva i preferiti nel localStorage
   }
 
-  fetchExchangeRates() {
-    this.exchangeRateService.getExchangeRates(this.selectedCurrencyFrom.code).subscribe(
-      rates => {
-        this.exchangeRates = rates;
-        this.updateExchangeRate();
-        this.convertCurrency();
-      },
-      error => {
-        console.error('Errore nel caricamento dei tassi di cambio:', error);
-      }
-    );
-  }
-
-  convertCurrencyFromLeft(value: number) {
-    this.amountFrom = value;
-    this.updateExchangeRate();
-    this.amountTo = this.amountFrom * this.exchangeRate;
-  }
-
-  convertCurrencyFromRight(value: number) {
-    this.amountTo = value;
-    this.updateExchangeRate();
-    this.amountFrom = this.amountTo / this.exchangeRate;
-  }
-
-  updateExchangeRate() {
-    const fromRate = this.exchangeRates[this.selectedCurrencyFrom.code] || 1;
-    const toRate = this.exchangeRates[this.selectedCurrencyTo.code] || 1;
-    this.exchangeRate = toRate / fromRate;
-  }
-
-  swapCurrencies() {
-    [this.selectedCurrencyFrom, this.selectedCurrencyTo] = [this.selectedCurrencyTo, this.selectedCurrencyFrom];
-    [this.amountFrom, this.amountTo] = [this.amountTo || 0, this.amountFrom || 0];
-    this.fetchExchangeRates();
-  }
-
-  convertCurrency() {
-    this.updateExchangeRate();
-    this.amountTo = this.amountFrom * this.exchangeRate;
-  }
-
-  // Gestione preferiti
-  toggleFavorite() {
-    const pair = { from: this.selectedCurrencyFrom.code, to: this.selectedCurrencyTo.code };
-    const index = this.favorites.findIndex(fav => fav.from === pair.from && fav.to === pair.to);
-
-    if (index > -1) {
-      this.favorites.splice(index, 1);
-    } else {
-      this.favorites.push(pair);
-    }
-
-    this.saveFavorites();
-  }
-
+  // Funzione per salvare i preferiti su localStorage
   saveFavorites() {
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
 
+  // Funzione per caricare i preferiti da localStorage
   loadFavorites() {
     const storedFavorites = localStorage.getItem('favorites');
     if (storedFavorites) {
@@ -105,7 +73,83 @@ export class HomeComponent {
     }
   }
 
+  // Funzione per aggiornare un preferito (quando cambiano i tassi)
+  updateFavoriteExchangeRate(favorite: Favorite) {
+    favorite.exchangeRateHistory.push(this.exchangeRate); // Aggiungi il nuovo tasso alla cronologia
+    favorite.lastModifiedDate = new Date().toISOString(); // Aggiungi la data dell'ultima modifica
+    this.saveFavorites(); // Salva i preferiti aggiornati nel localStorage
+  }
+
+  // Funzione per recuperare i tassi di cambio da un servizio esterno
+  fetchExchangeRates() {
+    this.exchangeRateService.getExchangeRates(this.selectedCurrencyFrom.code).subscribe(
+      rates => {
+        this.exchangeRates = rates;
+        this.updateExchangeRate(); // Aggiorna il tasso di cambio
+        this.convertCurrency(); // Effettua la conversione
+      },
+      error => {
+        console.error('Errore nel caricamento dei tassi di cambio:', error);
+      }
+    );
+  }
+
+  // Funzione per aggiornare il tasso di cambio
+  updateExchangeRate() {
+    const fromRate = this.exchangeRates[this.selectedCurrencyFrom.code] || 1;
+    const toRate = this.exchangeRates[this.selectedCurrencyTo.code] || 1;
+    this.exchangeRate = toRate / fromRate; // Calcola il tasso di cambio
+  }
+
+  // Funzione per scambiare le valute (modifica la coppia valutaria)
+  swapCurrencies() {
+    [this.selectedCurrencyFrom, this.selectedCurrencyTo] = [this.selectedCurrencyTo, this.selectedCurrencyFrom];
+    [this.amountFrom, this.amountTo] = [this.amountTo || 0, this.amountFrom || 0];
+    this.fetchExchangeRates(); // Ricarica i tassi di cambio dopo lo scambio
+  }
+
+  // Funzione per gestire la conversione da sinistra
+  convertCurrencyFromLeft(value: number) {
+    this.amountFrom = value;
+    this.updateExchangeRate();
+    this.amountTo = this.amountFrom * this.exchangeRate;
+  }
+
+  // Funzione per gestire la conversione da destra
+  convertCurrencyFromRight(value: number) {
+    this.amountTo = value;
+    this.updateExchangeRate();
+    this.amountFrom = this.amountTo / this.exchangeRate;
+  }
+
+  // Funzione per aggiungere o rimuovere i preferiti
+  toggleFavorite() {
+    const pair = { from: this.selectedCurrencyFrom.code, to: this.selectedCurrencyTo.code };
+    const index = this.favorites.findIndex(fav => fav.from === pair.from && fav.to === pair.to);
+
+    if (index > -1) {
+      // Se già esiste, aggiorniamo il tasso e la cronologia
+      this.updateFavoriteExchangeRate(this.favorites[index]);
+      this.favorites.splice(index, 1); // Rimuoviamo il preferito
+    } else {
+      // Aggiungiamo un nuovo preferito
+      this.addFavorite();
+    }
+  }
+
+  // Funzione per controllare se una coppia di valute è nei preferiti
   isFavorite(): boolean {
     return this.favorites.some(fav => fav.from === this.selectedCurrencyFrom.code && fav.to === this.selectedCurrencyTo.code);
+  }
+
+  // Funzione per cambiare modalità (tra valuta e paese)
+  toggleMode() {
+    this.useCountryMode = !this.useCountryMode;
+  }
+
+  // Funzione per la conversione delle valute
+  convertCurrency() {
+    this.updateExchangeRate();
+    this.amountTo = this.amountFrom * this.exchangeRate;
   }
 }
