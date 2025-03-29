@@ -8,11 +8,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <!-- Pulsante Info: rimane invariato -->
             <li class="nav-item">
                 <p-button label="Info" [raised]="true" severity="secondary" [routerLink]="['/info']"></p-button>
             </li>
-            <!-- Pulsante Preferiti: rimane invariato -->
             <li class="nav-item">
                 <p-button label="Preferiti" [raised]="true" severity="secondary" [routerLink]="['/preferiti']"></p-button>
             </li>                                                          
@@ -104,4 +102,10 @@
     <div (click)="toggleFavorite()" class="fav-icon">
         <i [class.pi-star]="!isFavorite()" [class.pi-star-fill]="isFavorite()" class="pi"></i>
     </div>
+</div>
+
+
+
+<div class="storico">
+    <app-storico></app-storico>
 </div>

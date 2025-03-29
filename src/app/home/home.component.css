@@ -266,6 +266,10 @@ app-menu {
     position: relative; 
 }
 
+.storico {
+    position: relative; 
+}
+
 .fav-icon {
     position: absolute;
     top: -32px; 
