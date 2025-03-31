@@ -8,7 +8,6 @@ import { ExchangeRateService } from '../services/exchange-rate.service';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { MenuPaesiComponent } from "../menu-paesi/menu-paesi.component";
-import { StoricoComponent } from "../storico/storico.component";
 
 // Modello per i preferiti
 interface Favorite {
@@ -25,7 +24,7 @@ interface Favorite {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, MenuComponent, InputValutaComponent, InputNumberModule, FormsModule, CommonModule, ButtonModule, MenuPaesiComponent, StoricoComponent],
+  imports: [RouterLink, RouterOutlet, MenuComponent, InputValutaComponent, InputNumberModule, FormsModule, CommonModule, ButtonModule, MenuPaesiComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 }) 
@@ -38,12 +37,13 @@ export class HomeComponent {
   exchangeRates: { [key: string]: number } = {};
   favorites: Favorite[] = []; // Array di preferiti
   useCountryMode: boolean = false; // Flag per controllare la modalità paese
-  storicoInizializzato: boolean = false; // Flag per evitare inserimento iniziale
+
 
   constructor(private exchangeRateService: ExchangeRateService) {
     this.fetchExchangeRates(); // Carica i tassi di cambio iniziali
     this.loadFavorites(); // Carica i preferiti salvati nel localStorage
   }
+
 
   // Funzione per aggiungere un nuovo preferito
   addFavorite() {
@@ -89,7 +89,6 @@ export class HomeComponent {
         this.exchangeRates = rates;
         this.updateExchangeRate(); // Aggiorna il tasso di cambio
         this.convertCurrency(); // Effettua la conversione
-        this.storicoInizializzato = true; // Impedisce inserimento iniziale
       },
       error => {
         console.error('Errore nel caricamento dei tassi di cambio:', error);
@@ -109,7 +108,6 @@ export class HomeComponent {
     [this.selectedCurrencyFrom, this.selectedCurrencyTo] = [this.selectedCurrencyTo, this.selectedCurrencyFrom];
     [this.amountFrom, this.amountTo] = [this.amountTo || 0, this.amountFrom || 0];
     this.fetchExchangeRates();
-    this.salvaStorico();
 }
 
   // Funzione per gestire la conversione da sinistra
@@ -117,16 +115,14 @@ export class HomeComponent {
     this.amountFrom = value;
     this.updateExchangeRate();
     this.amountTo = this.amountFrom * this.exchangeRate;
-    this.salvaStorico();
-}
+  }
 
   // Funzione per gestire la conversione da destra
   convertCurrencyFromRight(value: number) {
     this.amountTo = value;
     this.updateExchangeRate();
     this.amountFrom = this.amountTo / this.exchangeRate;
-    this.salvaStorico();
-}
+  }
 
   toggleFavorite() {
     const pair = { from: this.selectedCurrencyFrom.code, to: this.selectedCurrencyTo.code };
@@ -154,7 +150,6 @@ export class HomeComponent {
 
 
 
-
   // Funzione per controllare se una coppia di valute è nei preferiti
   isFavorite(): boolean {
     return this.favorites.some(fav => fav.from === this.selectedCurrencyFrom.code && fav.to === this.selectedCurrencyTo.code);
@@ -169,48 +164,5 @@ export class HomeComponent {
   convertCurrency() {
     this.updateExchangeRate();
     this.amountTo = this.amountFrom * this.exchangeRate;
-
-    // Salva nella cronologia
-    const storicoEntry = {
-      from: this.selectedCurrencyFrom.code,
-      to: this.selectedCurrencyTo.code,
-      amount: this.amountFrom,
-      result: this.amountTo,
-      date: new Date().toLocaleString()
-    };
-
-    // Aggiungi alla cronologia
-    const storico = JSON.parse(localStorage.getItem('storico') || '[]');
-    storico.push(storicoEntry);
-    localStorage.setItem('storico', JSON.stringify(storico));
-    this.salvaStorico();
-  }
-
-  // ✅ Aggiorna la cronologia senza duplicati
-  salvaStorico() {
-    if (!this.storicoInizializzato) return; // Evita inserimento iniziale
-
-    const storicoEntry = {
-      from: this.selectedCurrencyFrom.code,
-      to: this.selectedCurrencyTo.code,
-      amount: this.amountFrom,
-      result: this.amountTo,
-      date: new Date().toLocaleString()
-    };
-
-    const storico = JSON.parse(localStorage.getItem('storico') || '[]');
-
-    // Evita duplicati consecutivi
-    const lastEntry = storico[storico.length - 1];
-    if (lastEntry &&
-      lastEntry.from === storicoEntry.from &&
-      lastEntry.to === storicoEntry.to &&
-      lastEntry.amount === storicoEntry.amount &&
-      lastEntry.result === storicoEntry.result) {
-      return;
-    }
-
-    storico.push(storicoEntry);
-    localStorage.setItem('storico', JSON.stringify(storico));
   }
 }
