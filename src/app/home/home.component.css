@@ -16,7 +16,7 @@ h1 {
     letter-spacing: 3px;
     text-transform: uppercase;
     position: absolute;
-    top: 20px;
+    top: 70px; /* Aggiungi margine maggiore per abbassare il titolo */
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -25,11 +25,11 @@ h1 {
 
 .navbar {
     background-color: inherit;
-    margin-top: 100px; /* Distanza dal titolo */
+    margin-top: 160px; /* Aggiungi margine maggiore per abbassare la navbar */
     padding: 0;
-    display: flex; /* Usa il flexbox per allineare gli elementi */
-    justify-content: center; /* Centra la navbar orizzontalmente */
-    width: 100%; /* Occupa tutta la larghezza disponibile */
+    display: flex;
+    justify-content: center;
+    width: 100%;
     position: relative;
 }
 
@@ -53,9 +53,8 @@ h1 {
 .exchange-container {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distribuisce gli elementi in modo uniforme */
-    gap: -2px; /* Stesso spazio tra tutti gli elementi */
-    margin-top: 165px;
+    justify-content: space-between;
+    gap: -2px;
     width: 100%;
     max-width: 800px;
     margin-left: auto;
@@ -65,6 +64,7 @@ h1 {
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     padding-bottom: 40px;
+    margin-top: 140px;
 }
 
 .amount-input,

@@ -1,4 +1,5 @@
 <html>
+  <h1>Info</h1>
 <nav class="navbar navbar-expand-lg navbar-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -6,22 +7,49 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/home']">⬅</a>
+          <p-button label="🏠 Home" [raised]="true" severity="secondary" [routerLink]="['/home']"></p-button>
           </li>
       </ul>
     </div>
   </nav>
+  
 <div class="container">
     <router-outlet></router-outlet>
 </div>
 
-<title>Info</title>
-<p></p>
 
-<body>
-  <h1>Informazioni</h1>
-  <p>I dati visualizzati su questo sito sono forniti da <strong>Exchange Rate API</strong> (<a href="https://www.exchangerate-api.com/" target="_blank">link</a>).</p>
-  <p>Il nostro servizio consente di convertire valute in tempo reale in modo semplice e veloce. Basta selezionare la valuta di partenza e quella di destinazione per ottenere il tasso di cambio aggiornato.</p>
-  <p>I tassi di cambio vengono aggiornati una volta al giorno, pertanto potrebbero non riflettere le fluttuazioni più recenti del mercato.</p>
-  <p>Se i dati risultano mancanti o non aggiornati, il problema potrebbe dipendere dall'API di terze parti e non dal nostro sito.</p>
-</body></html>
+<html>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+    <div class="container" style="max-width: 900px; margin: 40px auto; border-radius: 8px;">
+      <p style="font-size: 16px; line-height: 1.6; color: #000000;">
+        Questo strumento ti permette di monitorare facilmente i tassi di cambio e convertire le valute in modo veloce ed efficiente.
+      </p>
+
+      <hr style="border: 0; border-top: 2px solid #eeeeee; margin: 30px 0;">
+
+      <p style="font-size: 16px; line-height: 1.6; color: #000000;">
+        I tassi di cambio sono forniti da <strong>Exchange Rate API</strong>, una fonte affidabile per ottenere dati aggiornati sui tassi di valuta. Puoi visitare il loro sito ufficiale al seguente <a href="https://www.exchangerate-api.com/" target="_blank" style="color: #007bff;">link</a> per maggiori dettagli.
+      </p>
+
+      <p style="font-size: 16px; line-height: 1.6; color: #000000;">
+        Il servizio è progettato per essere semplice da usare. È sufficente selezionare la valuta di partenza e quella di destinazione, e avrai immediatamente il tasso di cambio aggiornato per la conversione.
+      </p>
+
+      <p style="font-size: 16px; line-height: 1.6; color: #000000;">
+        I tassi di cambio vengono aggiornati quotidianamente. Tuttavia, è importante tenere a mente che potrebbero esserci leggere discrepanze a causa delle fluttuazioni del mercato o della frequenza degli aggiornamenti. Se noti che i dati non sono aggiornati, potrebbe trattarsi di un problema legato all'API di terze parti e non del sito.
+      </p>
+
+      <hr style="border: 0; border-top: 2px solid #eeeeee; margin: 30px 0;">
+
+      <p style="font-size: 16px; line-height: 1.6; color: #000000; text-align: center;">
+        Ti invitiamo a visitare frequentemente il nostro sito per restare aggiornato con i tassi di cambio più recenti.
+      </p>
+      
+    </div>
+  </body>
+</html>
+

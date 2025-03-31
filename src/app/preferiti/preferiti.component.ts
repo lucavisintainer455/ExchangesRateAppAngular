@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-preferiti',
   standalone: true,
-  imports: [RouterOutlet, RouterLink,CommonModule],
+  imports: [RouterOutlet, RouterLink,CommonModule,ButtonModule],
   templateUrl: './preferiti.component.html',
   styleUrl: './preferiti.component.css'
 })
