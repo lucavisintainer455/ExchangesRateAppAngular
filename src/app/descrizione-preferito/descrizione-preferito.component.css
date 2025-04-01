@@ -35,5 +35,47 @@
 }
 
 
-
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.8rem;
+    color: #0a1931;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 70px; /* Aggiungi margine maggiore per abbassare il titolo */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    margin: 0;
+}
   
+.navbar {
+    background-color: inherit;
+    margin-top: 160px; /* Aggiungi margine maggiore per abbassare la navbar */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: center; /* Centra il contenuto dentro la navbar */
+    width: 100%; /* Assicura che il contenitore prenda tutta la larghezza disponibile */
+}
+
+.navbar-nav {
+    display: flex; /* Usa flexbox per i link della navbar */
+    justify-content: center; /* Centra i link della navbar */
+    padding: 0; /* Rimuove eventuali padding extra */
+    margin: 0; /* Rimuove eventuali margini extra */
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px; /* Distanza uniforme tra gli elementi del menu */
+}
+
+
