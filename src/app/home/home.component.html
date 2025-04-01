@@ -16,7 +16,7 @@
             </li>                                                          
         </ul>
     </div>
-</nav>     
+</nav>
 
 <div class="exchange-container">
     <!-- Contenitore Importo da Convertire (Sinistra) -->
@@ -104,4 +104,16 @@
     </div>
 </div>
 
+<!-- ✅ Barra Ticker -->
+<!-- Ticker container con caricamento -->
+<div class="ticker-container">
+    <div *ngIf="!tickerRates.length" class="loading-spinner">
+        <p>Loading...</p> <!-- Puoi sostituirlo con un'animazione o uno spinner -->
+    </div>
+    <div class="ticker-content" *ngIf="tickerRates.length">
+        <span *ngFor="let rate of tickerRates">
+            {{ rate.currency }}: {{ rate.value | number:'1.4-4' }}&nbsp;&nbsp;|&nbsp;&nbsp;
+        </span>
+    </div>
+</div>
 

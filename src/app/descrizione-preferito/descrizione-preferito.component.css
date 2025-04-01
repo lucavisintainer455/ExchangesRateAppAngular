@@ -61,10 +61,12 @@ h1 {
     position: relative;
 }
 
+
 .button{
     display: flex;
     justify-content: space-between;
 }
+
 
 .navbar-collapse {
     display: flex;

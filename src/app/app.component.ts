@@ -10,14 +10,6 @@ import { trigger, transition, style, animate } from '@angular/animations';
   imports: [RouterOutlet, InputNumberModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [
-    trigger('routeAnimations', [
-      transition('* <=> *', [
-        style({ opacity: 0, transform: 'translateX(-100%)' }),
-        animate('300ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
-      ])
-    ])
-  ]
 })
 export class AppComponent {
   title = 'ExchangeRateApp';
