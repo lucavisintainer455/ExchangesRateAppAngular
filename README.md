@@ -1,59 +1,72 @@
 # ExchangeRateApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+ExchangeRateApp is a simple application designed to fetch and display real-time exchange rates for various currencies. It provides users with an intuitive interface to track currency conversions efficiently.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Fetch real-time exchange rates from a reliable API.
+- Convert between multiple currencies.
+- User-friendly interface for quick navigation.
+- Support for multiple languages (if applicable).
 
-```bash
-ng serve
-```
+## Installation
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/ExchangeRateApp.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd ExchangeRateApp
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-## Code scaffolding
+## Usage
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Start the application:
+    ```bash
+    npm start
+    ```
+2. Open your browser and navigate to:
+    ```
+    http://localhost:3000
+    ```
+3. Use the interface to select currencies and view exchange rates.
 
-```bash
-ng generate component component-name
-```
+## Technologies Used
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Frontend**: React, CSS
+- **Backend**: Node.js, Express
+- **API**: Exchange rate API (e.g., [ExchangeRate-API](https://www.exchangerate-api.com/))
+- **Others**: Axios, dotenv
 
-```bash
-ng generate --help
-```
+## Contributing
 
-## Building
+Contributions are welcome! Please follow these steps:
 
-To build the project run:
+1. Fork the repository.
+2. Create a new branch:
+    ```bash
+    git checkout -b feature-name
+    ```
+3. Commit your changes:
+    ```bash
+    git commit -m "Add feature-name"
+    ```
+4. Push to the branch:
+    ```bash
+    git push origin feature-name
+    ```
+5. Open a pull request.
 
-```bash
-ng build
-```
+## License
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+This project is licensed under the [MIT License](LICENSE).
 
-## Running unit tests
+## Acknowledgments
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Thanks to [ExchangeRate-API](https://www.exchangerate-api.com/) for providing exchange rate data.
+- Inspired by the need for simple and efficient currency conversion tools.

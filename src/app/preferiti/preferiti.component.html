@@ -17,21 +17,23 @@
 
 <h1>Preferiti</h1>
 
-<ul class="favorites-list">
-  <li *ngFor="let fav of favorites; let i = index">
-    <span>{{ fav.from }} → {{ fav.to }}</span>
-    <div class="btn-group">
-      <button (click)="goToDetails(fav)" class="btn btn-warning">
-        <i class="pi pi-pen-to-square"></i> <!-- Icona modifica -->
-      </button>
-      <button (click)="removeFavorite(i)" class="btn btn-danger">
-        <i class="pi pi-trash"></i> <!-- Icona elimina -->
-      </button>
-    </div>
-  </li>
-</ul>
+<!-- Condizione per mostrare il messaggio se la lista è vuota -->
+<div *ngIf="favorites.length === 0; else favoritesList" class="no-favorites-message">
+  <p>Sembra che non ci siano preferiti aggiunti per ora</p>
+</div>
 
-
-<ng-template #noFavorites>
-  <p>Non hai ancora aggiunto preferiti.</p>
+<ng-template #favoritesList>
+  <ul class="favorites-list">
+    <li *ngFor="let fav of favorites; let i = index">
+      <span>{{ fav.from }} → {{ fav.to }}</span>
+      <div class="btn-group">
+        <button (click)="goToDetails(fav)" class="btn btn-warning">
+          <i class="pi pi-pen-to-square"></i> <!-- Icona modifica -->
+        </button>
+        <button (click)="removeFavorite(i)" class="btn btn-danger">
+          <i class="pi pi-trash"></i> <!-- Icona elimina -->
+        </button>
+      </div>
+    </li>
+  </ul>
 </ng-template>

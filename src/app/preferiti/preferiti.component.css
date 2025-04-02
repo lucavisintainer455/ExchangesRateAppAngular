@@ -33,7 +33,6 @@ body {
     margin: 0;
 }
 
-
 .favorites-list li {
   display: flex;
   justify-content: space-between;
@@ -66,7 +65,7 @@ body {
 
 .favorites-container {
     position: absolute;
-    top: 120px; /* Distanza dall'alto */
+    top: 120px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -77,3 +76,13 @@ body {
     border-radius: 10px;
     text-align: center;
 }
+
+.no-favorites-message {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 200px;
+  font-size: 1.3rem;         
+  color: #000000;         
+}
+
