@@ -9,13 +9,40 @@ Questo progetto è un'applicazione web sviluppata con Angular che permette agli 
 - 📝 Aggiungi una descrizione alle coppie preferite
 - 📊 Grafico storico delle valute preferite (dal momento dell'aggiunta ai preferiti)
 
+
+🗝️ Come Ottenere la Tua Chiave API
+Per ottenere una chiave API e accedere ai tassi di cambio, segui questi semplici passaggi:
+
+1. Registrati sul Sito di ExchangeRate-API
+Vai sul sito ufficiale di ExchangeRate-API: https://www.exchangerate-api.com/
+
+Clicca sul pulsante "Get Started" o "Sign Up" (Registrati).
+
+Se hai già un account, accedi; altrimenti, compila il modulo di registrazione con le tue informazioni.
+
+2. Scegli il Piano API
+ExchangeRate-API offre vari piani, incluso un piano gratuito:
+
+Piano gratuito: consente un aggiornamento giornaliero dei tassi di cambio.
+
+Piani a pagamento: offrono aggiornamenti più frequenti e funzionalità aggiuntive, come l'accesso ai tassi in tempo reale.
+
+Seleziona il piano che meglio si adatta alle tue necessità.
+
+3. Ottieni la Tua Chiave API
+Una volta effettuato l'accesso, vai alla sezione "Dashboard".
+
+Nella dashboard, troverai la tua API Key (chiave API). La chiave sarà una stringa alfanumerica univoca.
+
+Copia questa chiave, che utilizzerai per configurare il tuo progetto.
+
 ## 🛠️ Guida di Installazione e Configurazione
 
 ### 📦 Prerequisiti
 - Node.js (v18 o superiore)
 - npm (v9 o superiore)
 - Git installato
-
+- Chiave API
 ---
 
 ### 🚀 1. Clona il Progetto
