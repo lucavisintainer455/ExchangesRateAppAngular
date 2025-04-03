@@ -3,9 +3,6 @@
 # Ignora il file di configurazione
 src/environments/environment.ts
 
-# Mantieni il file di esempio
-!src/environments/environment.example.ts
-
 # Compiled output
 /dist
 /tmp
