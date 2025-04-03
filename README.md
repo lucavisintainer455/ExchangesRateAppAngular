@@ -1,72 +1,76 @@
-# ExchangeRateApp
+# 💱 Currency Converter - Real-Time Exchange Rates
 
-ExchangeRateApp is a simple application designed to fetch and display real-time exchange rates for various currencies. It provides users with an intuitive interface to track currency conversions efficiently.
+Questo progetto è un'applicazione web sviluppata con Angular che permette agli utenti di convertire valute in tempo reale utilizzando l'API di ExchangeRate-API. L'app offre un'interfaccia intuitiva per selezionare le valute e visualizzare rapidamente i tassi di cambio aggiornati.
 
-## Features
+## ✨ Funzionalità
+- 💱 Conversione in tempo reale tra valute
+- 🌍 Ricerca valute per paese
+- ⭐ Aggiungi coppie di valute ai preferiti
+- 📝 Aggiungi una descrizione alle coppie preferite
+- 📊 Grafico storico delle valute preferite (dal momento dell'aggiunta ai preferiti)
 
-- Fetch real-time exchange rates from a reliable API.
-- Convert between multiple currencies.
-- User-friendly interface for quick navigation.
-- Support for multiple languages (if applicable).
+## 🛠️ Guida di Installazione e Configurazione
 
-## Installation
+### 📦 Prerequisiti
+- Node.js (v18 o superiore)
+- npm (v9 o superiore)
+- Git installato
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/ExchangeRateApp.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd ExchangeRateApp
-    ```
-3. Install dependencies:
-    ```bash
-    npm install
-    ```
+---
 
-## Usage
+### 🚀 1. Clona il Progetto
+Apri il terminale e clona il repository:
+```bash
+git clone <URL-REPOSITORY>
+cd nome-progetto
+```
 
-1. Start the application:
-    ```bash
-    npm start
-    ```
-2. Open your browser and navigate to:
-    ```
-    http://localhost:3000
-    ```
-3. Use the interface to select currencies and view exchange rates.
+---
 
-## Technologies Used
+### 🟢 2. Installa le Dipendenze
+Esegui il comando:
+```bash
+npm install
+```
+Questo comando installerà tutte le dipendenze necessarie.
 
-- **Frontend**: React, CSS
-- **Backend**: Node.js, Express
-- **API**: Exchange rate API (e.g., [ExchangeRate-API](https://www.exchangerate-api.com/))
-- **Others**: Axios, dotenv
+---
 
-## Contributing
+### 📝 3. Configura l'Ambiente
+1. Vai nella cartella `src/environments`
+2. Duplica il file di esempio e rinominalo:
+```bash
+cp src/environments/environment.example.ts src/environments/environment.ts
+```
+3. Apri `environment.ts` e inserisci la tua chiave API:
+```typescript
+export const environment = {
+  production: false,
+  apiKey: 'INSERISCI_LA_TUA_API_KEY',
+  apiUrl: 'https://v6.exchangerate-api.com/v6'
+};
+```
 
-Contributions are welcome! Please follow these steps:
+---
 
-1. Fork the repository.
-2. Create a new branch:
-    ```bash
-    git checkout -b feature-name
-    ```
-3. Commit your changes:
-    ```bash
-    git commit -m "Add feature-name"
-    ```
-4. Push to the branch:
-    ```bash
-    git push origin feature-name
-    ```
-5. Open a pull request.
+### 🟢 4. Avvia il Progetto
+Avvia l'applicazione in modalità sviluppo:
+```bash
+npm start
+```
+Il progetto sarà accessibile all’indirizzo `http://localhost:4200`
 
-## License
+---
 
-This project is licensed under the [MIT License](LICENSE).
+### ✅ 5. Build per la Produzione
+Per creare un pacchetto pronto per la produzione, esegui:
+```bash
+npm run build
+```
+Il risultato si troverà nella cartella `dist`.
 
-## Acknowledgments
+---
 
-- Thanks to [ExchangeRate-API](https://www.exchangerate-api.com/) for providing exchange rate data.
-- Inspired by the need for simple and efficient currency conversion tools.
+## 🎉 Complimenti!
+Il progetto è ora configurato e funzionante! Se hai domande, contatta l’amministratore del progetto.
+
