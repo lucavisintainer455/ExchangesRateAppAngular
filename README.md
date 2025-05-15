@@ -10,18 +10,16 @@ Questo progetto è un'applicazione web sviluppata con Angular che permette agli 
 - 📊 Grafico storico delle valute preferite (dal momento dell'aggiunta ai preferiti)
 
 
-## 🗝️ Come Ottenere la Tua Chiave API
-Per utilizzare l'applicazione, è necessario ottenere una chiave API gratuita da ExchangeRate-API:
+## Come Ottenere la Tua Chiave API
 
-1. Visita exchangerate-api.com
+Per utilizzare l'applicazione, è necessario ottenere una chiave API gratuita da [ExchangeRate-API](https://www.exchangerate-api.com):
 
-2. Clicca su "Get Started" e registrati gratuitamente
-
-3. Dopo la registrazione, accedi alla Dashboard
-
-4. Copia la tua API Key, una stringa alfanumerica univoca
-
+1. Visita [exchangerate-api.com](https://www.exchangerate-api.com)
+2. Clicca su **"Get Started"** e registrati gratuitamente
+3. Dopo la registrazione, accedi alla **Dashboard**
+4. Copia la tua **API Key**, una stringa alfanumerica univoca
 5. Utilizza questa chiave come descritto nella sezione di configurazione
+
 
 ## 🛠️ Installazione e Avvio
 
