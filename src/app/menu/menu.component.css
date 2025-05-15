@@ -1,19 +1,19 @@
 /* Contenitore principale del dropdown */
 .currency-selector {
   width: 100%;
-  max-width: 100px; 
-  min-width: 150px; 
+  max-width: 150px;
+  min-width: 150px;
 }
 
 /* Stile personalizzato del dropdown */
 .custom-dropdown {
   width: 100%;
   border-radius: 6px;
-  font-size: 13px; 
-  min-height: 32px; 
+  font-size: 13px;
+  min-height: 32px;
 }
 
-/* Stile per l'elemento selezionato */
+/* Stile per l’elemento selezionato */
 .p-dropdown-label {
   display: flex !important;
   align-items: center !important;
@@ -24,7 +24,7 @@
 /* Stile per il menu dropdown */
 .p-dropdown-panel {
   border-radius: 6px;
-  min-width: 140px; 
+  min-width: 140px;
 }
 
 /* Elemento della lista dropdown */
@@ -33,7 +33,7 @@
   align-items: center;
   gap: 6px;
   padding: 4px 12px;
-  font-size: px;
+  font-size: 13px;
 }
 
 /* Effetto hover sugli elementi della lista */
@@ -48,4 +48,3 @@
   height: auto;
   border-radius: 3px;
 }
-

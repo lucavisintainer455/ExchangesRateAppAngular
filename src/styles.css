@@ -1,7 +1,12 @@
-/* Foglio di stile GLOBALE */
-body {
+/* ================================================
+   Foglio di stile GLOBALE per l'applicazione
+   - Impostazioni di base per body
+   - Font generale e colore di sfondo
+   ================================================ */
+
+   body {
     background-color: #a3d5ff;
     margin: 0;
     font-family: Arial, sans-serif;
   }
-
+  

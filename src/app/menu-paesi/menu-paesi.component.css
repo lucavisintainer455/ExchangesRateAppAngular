@@ -1,21 +1,27 @@
-/* Stile per l'elemento selezionato (sezione 'Seleziona paese') */
+/* Contenitore del selettore */
+.country-selector {
+  max-width: 300px;
+}
+
+/* Stile per l’elemento selezionato (testo e bandiera) */
 .p-dropdown-label {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start; /* Aggiungi questa linea per allineare a sinistra */
+  justify-content: flex-start !important;
   gap: 8px;
-  padding: 6px 4px;
-  font-size: 14px; 
+  padding: 6px 8px;
+  font-size: 14px;
 }
 
-/* Bandiera accanto al nome del paese */
+/* Icona bandiera */
 .flag-icon {
-  width: 20px;  /* Imposta la larghezza della bandiera */
-  height: auto;  /* Mantieni le proporzioni della bandiera */
-  margin-right: 8px;  /* Aggiungi spazio tra la bandiera e il nome del paese */
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+  border-radius: 2px;
 }
 
-/* Elemento della lista dropdown */
+/* Stile per ogni elemento della lista */
 .dropdown-item {
   display: flex;
   align-items: center;
@@ -24,15 +30,14 @@
   font-size: 13px;
 }
 
-/* Effetto hover sugli elementi della lista */
+/* Hover sugli elementi */
 .dropdown-item:hover {
   background-color: #f0f0f0;
   cursor: pointer;
 }
 
-/* Imposta la larghezza del select */
+/* Larghezza dropdown */
 .p-dropdown {
-  width: auto !important;  /* Imposta la larghezza automatica */
-  min-width: 1px;  /* Imposta una larghezza minima, se necessario */
+  width: 100% !important;
+  min-width: 1px;
 }
-

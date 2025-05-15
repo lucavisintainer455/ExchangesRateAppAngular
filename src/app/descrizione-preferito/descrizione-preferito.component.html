@@ -1,49 +1,67 @@
 <h1>Dettaglio Preferito</h1>
+
 <div class="container">
   <div class="grid">
+
     <!-- Colonna immagine valuta (Da) -->
     <div class="currency-img-container">
-      <img class="flag-icon" [src]="currencyImageFrom" alt="{{ favorite.from }} valuta" class="currency-img">
+      <img 
+        class="flag-icon currency-img" 
+        [src]="currencyImageFrom" 
+        [alt]="favorite.from + ' valuta'">
     </div>
 
     <!-- Colonna dettagli preferito -->
     <div class="details-container">
       <p-card class="favorite-card">
         <ng-template pTemplate="content">
+
           <div class="details">
             <p><strong>Da:</strong> {{ favorite.from }}</p>
             <p><strong>A:</strong> {{ favorite.to }}</p>
 
-            <p><strong>Descrizione: </strong>
-              <span *ngIf="!isEditing">{{ favorite.description || 'Nessuna descrizione' }}</span>
-              <input *ngIf="isEditing" [(ngModel)]="editedDescription" pInputText>
+            <p>
+              <strong>Descrizione:</strong>
+              <span *ngIf="!isEditing">
+                {{ favorite.description || 'Nessuna descrizione' }}
+              </span>
+              <input 
+                *ngIf="isEditing" 
+                [(ngModel)]="editedDescription" 
+                pInputText>
             </p>
 
             <p><strong>Data aggiunta:</strong> {{ favorite.addedDate }}</p>
             <p><strong>Ultima modifica:</strong> {{ favorite.lastModifiedDate || 'Non ancora modificato' }}</p>
-            <p><strong>Tasso al momento dell'aggiunta:</strong>
-              {{ favorite.exchangeRateAtAdd || 'N/A' }}
-            </p>
-
+            <p><strong>Tasso al momento dell'aggiunta:</strong> {{ favorite.exchangeRateAtAdd || 'N/A' }}</p>
             <p><strong>Tasso attuale:</strong> {{ favorite.currentRate || 'N/A' }}</p>
-
           </div>
 
           <p-divider></p-divider>
 
           <!-- Bottoni -->
           <div class="button">
-
-            <p-button label="⬅️ Indietro" [raised]="true" severity="secondary" [routerLink]="['/preferiti']">
+            <p-button 
+              label="⬅️ Indietro" 
+              [raised]="true" 
+              severity="secondary" 
+              [routerLink]="['/preferiti']">
             </p-button>
-            <p-button *ngIf="!isEditing" (onClick)="startEditing()" label="✏️ Modifica" styleClass="p-button-warning">
-            </p-button>
-            <p-button *ngIf="isEditing" (onClick)="saveFavorite()" label="Salva" styleClass="p-button-success">
+
+            <p-button 
+              *ngIf="!isEditing" 
+              (onClick)="startEditing()" 
+              label="✏️ Modifica" 
+              styleClass="p-button-warning">
             </p-button>
 
-
+            <p-button 
+              *ngIf="isEditing" 
+              (onClick)="saveFavorite()" 
+              label="Salva" 
+              styleClass="p-button-success">
+            </p-button>
           </div>
-
 
         </ng-template>
       </p-card>
@@ -51,14 +69,21 @@
 
     <!-- Colonna immagine valuta (A) -->
     <div class="currency-img-container">
-      <img class="flag-icon" [src]="currencyImageTo" alt="{{ favorite.to }} valuta" class="currency-img">
+      <img 
+        class="flag-icon currency-img" 
+        [src]="currencyImageTo" 
+        [alt]="favorite.to + ' valuta'">
     </div>
+
   </div>
 </div>
 
-
-
-
+<!-- Grafico del tasso di cambio -->
 <div class="card" *ngIf="chartData">
-  <p-chart type="line" [data]="chartData" [options]="chartOptions" class="h-[30rem]" />
+  <p-chart 
+    type="line" 
+    [data]="chartData" 
+    [options]="chartOptions" 
+    class="h-[30rem]">
+  </p-chart>
 </div>
