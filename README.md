@@ -1,6 +1,6 @@
 # 💱 Currency Converter - Real-Time Exchange Rates
 
-Questo progetto è un'applicazione web sviluppata con Angular che permette agli utenti di convertire valute in tempo reale utilizzando l'API di ExchangeRate-API. L'app offre un'interfaccia intuitiva per selezionare le valute e visualizzare rapidamente i tassi di cambio aggiornati.
+Questa applicazione web, sviluppata con Angular, consente la conversione istantanea di valute grazie all'integrazione con l'API di ExchangeRate-API. Grazie a un'interfaccia semplice e reattiva, gli utenti possono selezionare facilmente le valute desiderate e ottenere i tassi di cambio aggiornati in tempo reale.
 
 ## ✨ Funzionalità Principali
 - 🔄 Conversione in tempo reale tra valute
