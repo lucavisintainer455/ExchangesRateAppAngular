@@ -15,7 +15,7 @@ Questa applicazione web, sviluppata con Angular, consente la conversione istanta
 Per utilizzare l'applicazione, è necessario ottenere una chiave API gratuita da [ExchangeRate-API](https://www.exchangerate-api.com):
 
 1. Visita [exchangerate-api.com](https://www.exchangerate-api.com)
-2. Clicca su **"Get Started"** e registrati gratuitamente
+2. Clicca su **"Get Free Key"** e registrati gratuitamente
 3. Dopo la registrazione, accedi alla **Dashboard**
 4. Copia la tua **API Key**, una stringa alfanumerica univoca
 5. Utilizza questa chiave come descritto nella sezione di configurazione
@@ -25,10 +25,10 @@ Per utilizzare l'applicazione, è necessario ottenere una chiave API gratuita da
 
 ### 📦 Prerequisiti
 
-Node.js (v18 o superiore)
-npm (v9 o superiore)
-Git installato
-Una chiave API valida
+- [Node.js](https://nodejs.org/) (v18 o superiore)
+- [npm](https://www.npmjs.com/) (v9 o superiore)
+- [Git](https://git-scm.com/)
+- Una **chiave API valida**
 ---
 
 ### 🚀 1. Clona il Progetto
@@ -96,7 +96,6 @@ Il progetto è ora configurato e funzionante! Se hai domande, contatta l’ammin
 - Layout responsive e ordinato
 - Feedback visuali per operazioni completate
 - Navigazione fluida tra le sezioni tramite Angular Routing
-- Pagina di errore 404 per URL non validi
 
 ## 🏁 Conclusione
 Currency Converter è un'applicazione completa che integra un'API esterna per fornire tassi di cambio aggiornati e offre una gestione locale dei dati con operazioni CRUD simulate. Tutte le funzionalità sono sviluppate con buone pratiche Angular, garantendo un'esperienza utente fluida, semplice ed estensibile.
